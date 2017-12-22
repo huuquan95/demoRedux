@@ -13,14 +13,10 @@ export default class TaskListDoneComponent extends Component {
     render() {
         return (
             <FlatList
-                //const result = words.filter(word => word.length > 6);
-
-                //data={this.props.tasks}
-                data={}
-
+                data={this.props.tasks.filter(task => task.completed == true)}
                 renderItem={({ item, index }) => {
                     return (
-                        <  TaskItemContainer  {...item}>
+                        <TaskItemContainer  {...item}>
                         </TaskItemContainer>
                     );
                 }}

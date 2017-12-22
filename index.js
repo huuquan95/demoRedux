@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, Text } from 'react-native';
+import { AppRegistry, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
 //redux
@@ -13,6 +13,9 @@ import TabListDoneContainer from './containers/TabListDoneContainer';
 let store = createStore(allReducers);
 
 class TabDone extends Component {
+    static navigationOptions = {
+        title:'Done tasks'
+    };
     render() {
         return (
             <TabListDoneContainer />
@@ -21,7 +24,9 @@ class TabDone extends Component {
 }
 
 class Home extends Component {
-    state = {}
+    static navigationOptions = {
+        title:'All tasks'
+    };
     render() {
         return (
             <Provider store={store}>
@@ -44,10 +49,17 @@ const Main = TabNavigator(
         tabBarPosition: 'bottom',
         animationEnabled: true,
         tabBarOptions: {
-            activeTintColor: 'green',
-            inactiveTintColor: 'black'
+            activeTintColor: 'white',
+            activeBackgroundColor: '#3496F0',
+            style: {
+                borderTopColor: '#3496F0',
+                borderColor: '#3496f0',
+                height: 35
+            },
+            labelStyle:{fontSize: 16, marginBottom: 7}
         },
-    });
+    },
+);
 
 const App = () => (
     <Provider store={store}>
