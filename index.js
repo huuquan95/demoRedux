@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
-import { AppRegistry, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import {
+    AppRegistry,
+    Text, TouchableOpacity, Image,
+    Dimensions,
+    Platform,
+    Button
+} from 'react-native';
+import { TabNavigator, DrawerNavigator } from 'react-navigation';
 
 //redux
 import { createStore } from 'redux';
@@ -12,10 +18,15 @@ import TabListDoneContainer from './containers/TabListDoneContainer';
 
 let store = createStore(allReducers);
 
-class TabDone extends Component {
-    static navigationOptions = {
-        title:'Done tasks'
-    };
+class AllTasks extends Component {
+    render() {
+        return (
+            <TaskManagerComponent />
+        )
+    }
+}
+
+class DoneTasks extends Component {
     render() {
         return (
             <TabListDoneContainer />
@@ -23,26 +34,35 @@ class TabDone extends Component {
     }
 }
 
-class Home extends Component {
-    static navigationOptions = {
-        title:'All tasks'
-    };
+class Setting extends Component {
     render() {
         return (
-            <Provider store={store}>
-                <TaskManagerComponent />
-            </Provider>
+            <Text>This is Setting Tab.</Text>
         )
     }
 }
 
-const Main = TabNavigator(
+class AboutApp extends Component {
+    render() {
+        return (
+            <Text>This is About Tab.</Text>
+        )
+    }
+}
+
+const Tasks = TabNavigator(
     {
-        Home: {
-            screen: Home,
+        AllTasks: {
+            screen: AllTasks,
+            navigationOptions: {
+                drawerLabel: 'All tasks'
+            }
         },
-        TabDone: {
-            screen: TabDone,
+        DoneTasks: {
+            screen: DoneTasks,
+            navigationOptions: {
+                drawerLabel: 'Done tasks'
+            }
         },
     },
     {
@@ -50,20 +70,43 @@ const Main = TabNavigator(
         animationEnabled: true,
         tabBarOptions: {
             activeTintColor: 'white',
+            //  inactiveTintColor:'#ECF0F1',
             activeBackgroundColor: '#3496F0',
+            inactiveBackgroundColor: '#00e640',
             style: {
                 borderTopColor: '#3496F0',
                 borderColor: '#3496f0',
-                height: 35
+                //  height: Platform.OS === 'ios' ? 35 : 50
             },
-            labelStyle:{fontSize: 16, marginBottom: 7}
+            tabStyle: {
+                height: 45
+            },
+            labelStyle: { fontSize: 16, marginBottom: 7 },
+            upperCaseLabel: false,
         },
     },
 );
 
+const DrawerApp = DrawerNavigator(
+    {
+        Tasks: {
+            screen: Tasks,
+            navigationOptions: {
+                drawerLabel: 'Tasks'
+            }
+        }, Setting: {
+            screen: Setting,
+        }, AboutApp: {
+            screen: AboutApp, navigationOptions: {
+                drawerLabel: 'About App'
+            }
+        },
+    }
+)
+
 const App = () => (
     <Provider store={store}>
-        <Main />
+        <DrawerApp />
     </Provider>
 )
 

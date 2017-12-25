@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import { addNewTask } from '../actions';
+import AddModal from './AddModal';
 
 export default class AddComponent extends Component {
 
@@ -15,6 +16,10 @@ export default class AddComponent extends Component {
         this.state = ({
             newTaskName: ''
         });
+    }
+
+    _onChangeText = (text) => {
+        this.setState({ newTaskName: text });
     }
 
     render() {
@@ -26,42 +31,48 @@ export default class AddComponent extends Component {
                 alignItems: 'center',
                 padding: 10
             }}>
+
                 <TouchableOpacity
-                    
-                    onPress={(event) => {
-                        alert('Please wait me.')
-                    }}
+                //  onPress={this.props._onPressAdd}
                 >
-                    <Image style={{ width: 30, height: 30 }}
+                    <Image
+                        style={{ width: 30, height: 30 }}
                         source={require('../icons/icon-menu.png')}>
                     </Image>
                 </TouchableOpacity>
+
                 <TextInput
-                    style={{ fontSize: 20, color: 'white' , width: 270, textAlign:'center'}}
+                    style={{
+                        fontSize: 20,
+                        color: 'white',
+                        width: 270,
+                        textAlign: 'center',
+                        borderColor: '#3496F0'
+                    }}
+                    underlineColorAndroid='transparent'
                     keyboardType='default'
                     placeholderTextColor='white'
                     placeholder='Enter task name'
+                    placeholderTextColor='#eeeeee'
                     autoCapitalize='none'
-                    onChangeText={
-                        (text) => {
-                            this.setState({ newTaskName: text })
-                        }
-                    }
+                    onChangeText={this._onChangeText}
                 >
                 </TextInput>
+
                 <TouchableOpacity
-                    onPress={(event) => {
-                        if (!this.state.newTaskName.trim()) {
-                            return;
-                        }
-                        this.props.onClickAdd(this.state.newTaskName);
-                    }}
+                    // onPress={(event) => {
+                    //     if (!this.state.newTaskName.trim()) {
+                    //         return;
+                    //     }
+                    //     this.props.onClickAdd(this.state.newTaskName);
+                    // }}
+                    onPress={this.props._onPressAdd}
                 >
                     <Image style={{ width: 35, height: 35 }}
                         source={require('../icons/icon-add2.png')}>
                     </Image>
                 </TouchableOpacity>
-
+                <AddModal ref={'addModal'}></AddModal>
             </View>
         )
     }
