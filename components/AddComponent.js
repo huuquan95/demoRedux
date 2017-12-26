@@ -62,7 +62,7 @@ export default class AddComponent extends Component {
                 </TextInput>
 
                 <TouchableOpacity
-                    onPress={this.props.onClickShowTaskModal}
+                    onPress={this.props.onToggleAddTaskModal}
                 >
                     <Image style={{ width: 35, height: 35 }}
                         source={require('../icons/icon-add2.png')}>

@@ -1,4 +1,9 @@
-import { ADD_NEW_TASK, ADD_NEW_TASK1, TOGGLE_ONE_TASK, SHOW_ADD_TASK_MODAL } from './actionTypes';
+import {
+    ADD_NEW_TASK,
+    ADD_NEW_TASK1,
+    TOGGLE_ONE_TASK,
+    TOGGLE_ADD_TASK_MODAL
+} from './actionTypes';
 let newTaskId = 4;
 
 // Action: 'add new task'
@@ -19,8 +24,8 @@ export const toggleTask = (taskId) => {
 }
 
 // Action: 'Click Add button to show AddModal'
-export const showAddTaskModal = () => {
+export const toggleAddTaskModal = () => {
     return {
-        type: SHOW_ADD_TASK_MODAL
+        type: TOGGLE_ADD_TASK_MODAL
     }
 }

@@ -1,4 +1,4 @@
-import { ADD_NEW_TASK, TOGGLE_ONE_TASK, SHOW_ADD_TASK_MODAL } from '../actions/actionTypes.js'
+import { ADD_NEW_TASK, TOGGLE_ONE_TASK, TOGGLE_ADD_TASK_MODAL } from '../actions/actionTypes.js'
 
 const defaultState = {
     tasks: [
@@ -52,10 +52,10 @@ const taskReducers = (state = defaultState, action) => {
                 )
             }
 
-        case SHOW_ADD_TASK_MODAL:
+        case TOGGLE_ADD_TASK_MODAL:
             return {
                 ...state,
-                isShowAddTaskModal: true
+                isShowAddTaskModal: !state.isShowAddTaskModal
             }
 
         default:

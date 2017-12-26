@@ -8,7 +8,6 @@ import {
 import AddContainer from '../containers/AddContainer';
 import TaskListContainer from '../containers/TaskListContainer';
 import AddModalContainer from '../containers/AddModalContainer';
-import AddModal from './AddModal';
 import { Button } from 'react-native';
 
 export default class TaskManagerComponent extends Component {
@@ -19,7 +18,7 @@ export default class TaskManagerComponent extends Component {
             >
                 <AddContainer _onPressAdd={this._onPressAdd} />
                 <TaskListContainer />
-                <AddModal></AddModal>
+                <AddModalContainer></AddModalContainer>
             </View>
         )
     }
