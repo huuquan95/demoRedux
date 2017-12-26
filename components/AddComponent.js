@@ -6,9 +6,6 @@ import {
     RefreshControl, TextInput, TouchableOpacity
 } from 'react-native';
 
-import { addNewTask } from '../actions';
-import AddModal from './AddModal';
-
 export default class AddComponent extends Component {
 
     constructor(props) {
@@ -33,7 +30,12 @@ export default class AddComponent extends Component {
             }}>
 
                 <TouchableOpacity
-                //  onPress={this.props._onPressAdd}
+                    onPress={(event) => {
+                        if (!this.state.newTaskName.trim()) {
+                            return;
+                        }
+                        this.props.onClickAdd(this.state.newTaskName);
+                    }}
                 >
                     <Image
                         style={{ width: 30, height: 30 }}
@@ -60,19 +62,12 @@ export default class AddComponent extends Component {
                 </TextInput>
 
                 <TouchableOpacity
-                    // onPress={(event) => {
-                    //     if (!this.state.newTaskName.trim()) {
-                    //         return;
-                    //     }
-                    //     this.props.onClickAdd(this.state.newTaskName);
-                    // }}
-                    onPress={this.props._onPressAdd}
+                    onPress={this.props.onClickShowTaskModal}
                 >
                     <Image style={{ width: 35, height: 35 }}
                         source={require('../icons/icon-add2.png')}>
                     </Image>
                 </TouchableOpacity>
-                <AddModal ref={'addModal'}></AddModal>
             </View>
         )
     }

@@ -13,7 +13,7 @@ export default class TaskListDoneComponent extends Component {
     render() {
         return (
             <FlatList
-                data={this.props.tasks.filter(task => task.completed == true)}
+                data={this.props.tasks}
                 renderItem={({ item, index }) => {
                     return (
                         <TaskItemContainer  {...item}>

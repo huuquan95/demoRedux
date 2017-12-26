@@ -9,11 +9,12 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.51.0",
-    "redux": "^3.7.2",
-    "react-redux": "*",
-    "react-navigation": "^1.0.0-beta.21",
+    "react-native-button": "*",
+    "react-native-modal": "^4.1.1",
     "react-native-modalbox": "*",
-    "react-native-button": "*"
+    "react-navigation": "^1.0.0-beta.21",
+    "react-redux": "*",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-jest": "22.0.3",

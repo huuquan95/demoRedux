@@ -2,20 +2,16 @@ import React, { Component } from 'react';
 import {
     AppRegistry, FlatList,
     StyleSheet, Text, View, Image, Alert, Platform,
-    TouchableHighlight,
+    TouchableHighlight, TouchableOpacity,
     RefreshControl, TextInput
 } from 'react-native';
-
 import AddContainer from '../containers/AddContainer';
 import TaskListContainer from '../containers/TaskListContainer';
+import AddModalContainer from '../containers/AddModalContainer';
 import AddModal from './AddModal';
 import { Button } from 'react-native';
 
 export default class TaskManagerComponent extends Component {
-
-    _onPressAdd = () => {
-        this.refs.addModal._showAddModal();
-    }
 
     render() {
         return (
@@ -23,7 +19,7 @@ export default class TaskManagerComponent extends Component {
             >
                 <AddContainer _onPressAdd={this._onPressAdd} />
                 <TaskListContainer />
-                <AddModal ref={'addModal'}></AddModal>
+                <AddModal></AddModal>
             </View>
         )
     }

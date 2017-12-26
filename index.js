@@ -66,6 +66,7 @@ const Tasks = TabNavigator(
         },
     },
     {
+        swipeEnabled: true,
         tabBarPosition: 'bottom',
         animationEnabled: true,
         tabBarOptions: {

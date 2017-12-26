@@ -16,17 +16,18 @@ export default class AddModal extends Component {
         super(props);
         this.state = {
             newTaskName: '',
-            newTaskDescription: ''
+            newTaskDescription: '',
+            isOpen: true
         }
     }
 
-    _showAddModal = () => {
-        this.refs.myModal.open();
-    }
+    // _showAddModal = () => {
+    //     this.refs.myModal.open();
+    // }
 
-    _hideAddModal = () => {
-        this.refs.myModal.close();
-    }
+    // _hideAddModal = () => {
+    //     this.refs.myModal.close();
+    // }
 
     _onChangeTaskName = (text) => {
         this.setState({ newTaskName: text });
@@ -39,10 +40,11 @@ export default class AddModal extends Component {
     render() {
         return (
             <Modal
-                ref={'myModal'}
+                isOpen={this.props.isShowAddTaskModal}
+                // ref={'myModal'}
                 style={{
                     justifyContent: 'space-around',
-                    borderRadius: Platform.OS === 'ios' ? 30 : 10,
+                    borderRadius: Platform.OS === 'ios' ? 20 : 10,
                     shadowRadius: 10,
                     width: screen.width - 80,
                     height: 280
@@ -97,7 +99,12 @@ export default class AddModal extends Component {
                 >
                     <Button
                         style={{ color: 'gray', fontSize: 20 }}
-                        onPress={this._hideAddModal}
+                        //onPress={this._hideAddModal}
+                        onPress={() => {
+                            this.setState({
+                                isOpen: false
+                            })
+                        }}
                     >
                         Cancel
                     </Button>
@@ -110,9 +117,9 @@ export default class AddModal extends Component {
                                 return;
                             }
                             else {
-                                alert('Save successful')
+                                this.props.onClickAdd(this.state.newTaskName, this.state.newTaskDescription);
+                                //this._hideAddModal()
                             }
-                            this._hideAddModal()
                         }}
                     >
                         Done
