@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addNewTask1, toggleAddTaskModal } from '../actions';
+import { addNewTask, toggleAddTaskModal } from '../actions';
 import AddModal from '../components/AddModal';
 
 const mapStateToProps = state => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onToggleAddTaskModal: () => {
             dispatch(toggleAddTaskModal());
+        },
+        onAddNewTask: (inputTaskName, inputTaskDescription) => {
+            dispatch(addNewTask(inputTaskName, inputTaskDescription));
         },
     };
 }

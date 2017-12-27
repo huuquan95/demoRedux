@@ -30,11 +30,8 @@ export default class AddComponent extends Component {
             }}>
 
                 <TouchableOpacity
-                    onPress={(event) => {
-                        if (!this.state.newTaskName.trim()) {
-                            return;
-                        }
-                        this.props.onClickAdd(this.state.newTaskName);
+                    onPress={() => {
+                        alert('You have just hitted a Menu button')
                     }}
                 >
                     <Image
@@ -43,7 +40,7 @@ export default class AddComponent extends Component {
                     </Image>
                 </TouchableOpacity>
 
-                <TextInput
+                {/* <TextInput
                     style={{
                         fontSize: 20,
                         color: 'white',
@@ -59,7 +56,7 @@ export default class AddComponent extends Component {
                     autoCapitalize='none'
                     onChangeText={this._onChangeText}
                 >
-                </TextInput>
+                </TextInput> */}
 
                 <TouchableOpacity
                     onPress={this.props.onToggleAddTaskModal}

@@ -105,7 +105,15 @@ export default class AddModal extends Component {
                                 alert('Please fulfill this form');
                             }
                             else {
-                                this.props.onToggleAddTaskModal()
+                                this.props.onAddNewTask(this.state.newTaskName, this.state.newTaskDescription);
+                                this.setState((state) => {
+                                    return {
+                                        ...state,
+                                        newTaskName: '',
+                                        newTaskDescription: ''
+                                    }
+                                })
+                                this.props.onToggleAddTaskModal();
                             }
                         }}
                     >

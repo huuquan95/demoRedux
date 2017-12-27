@@ -1,25 +1,33 @@
-import { ADD_NEW_TASK, TOGGLE_ONE_TASK, TOGGLE_ADD_TASK_MODAL } from '../actions/actionTypes.js'
+import {
+    ADD_NEW_TASK,
+    TOGGLE_ONE_TASK,
+    TOGGLE_ADD_TASK_MODAL
+} from '../actions/actionTypes.js';
 
 const defaultState = {
     tasks: [
         {
             taskId: 0,
             taskName: 'Get up',
+            taskDescription: '10:00 AM',
             completed: true
         },
         {
             taskId: 1,
             taskName: 'Wake',
+            taskDescription: '9:00 AM',
             completed: false
         },
         {
             taskId: 2,
             taskName: 'Wash a face',
+            taskDescription: '8:00 AM',
             completed: false
         },
         {
             taskId: 3,
             taskName: 'brush teeth',
+            taskDescription: '7:00 AM',
             completed: true
         }
     ],
@@ -36,6 +44,7 @@ const taskReducers = (state = defaultState, action) => {
                 tasks: [{
                     taskId: action.taskId,
                     taskName: action.taskName,
+                    taskDescription: action.taskDescription,
                     completed: false
                 }].concat(state.tasks),
             }
@@ -64,4 +73,4 @@ const taskReducers = (state = defaultState, action) => {
 }
 
 export default taskReducers;
-//alert(`state send to task list =${JSON.stringify(state)} `);
+//alert(` =${JSON.stringify(state)} `);
