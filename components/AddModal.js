@@ -41,7 +41,9 @@ export default class AddModal extends Component {
                     borderRadius: Platform.OS === 'ios' ? 20 : 10,
                     shadowRadius: 10,
                     width: screen.width - 80,
-                    height: 280
+                    height: 280,
+                    paddingLeft: 30,
+                    paddingRight: 30
                 }}
                 position='center'
                 backdrop={true}
@@ -56,33 +58,37 @@ export default class AddModal extends Component {
                     }}
                 >Add New Task</Text>
 
-                <TextInput
-                    style={{
-                        fontSize: 16,
-                        height: 40,
-                        borderColor: 'gray',
-                        marginLeft: 30,
-                        marginRight: 30,
-                        borderBottomWidth: 1
-                    }}
-                    placeholderTextColor='#BDC3C7'
-                    placeholder='Task name'
-                    onChangeText={this._onChangeTaskName}
-                ></TextInput>
+                <View>
+                    <TextInput
+                        style={{
+                            fontSize: 16,
+                            height: 40,
+                            borderColor: 'gray',
+                            padding: 10,
+                            borderWidth: 1,
+                            borderRadius: 15,
+                            marginBottom: 15
+                        }}
+                        placeholderTextColor='#BDC3C7'
+                        placeholder='Task name'
+                        onChangeText={this._onChangeTaskName}
+                    ></TextInput>
 
-                <TextInput
-                    style={{
-                        fontSize: 16,
-                        height: 40,
-                        borderColor: 'gray',
-                        marginLeft: 30,
-                        marginRight: 30,
-                        borderBottomWidth: 1
-                    }}
-                    placeholderTextColor='#BDC3C7'
-                    placeholder='Task description'
-                    onChangeText={this._onChangeTaskDescription}
-                ></TextInput>
+                    <TextInput
+                        style={{
+                            fontSize: 16,
+                            height: 40,
+                            borderColor: 'gray',
+                            padding: 10,
+                            borderWidth: 1,
+                            borderRadius: 15
+                        }}
+                        placeholderTextColor='#BDC3C7'
+                        placeholder='Task description'
+                        onChangeText={this._onChangeTaskDescription}
+                    ></TextInput>
+                </View>
+
                 <View
                     style={{
                         flexDirection: 'row',

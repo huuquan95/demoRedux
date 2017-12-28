@@ -8,7 +8,7 @@ import {
 
 export default class TaskItemComponent extends Component {
     render() {
-        let textToDisplay1 = `${this.props.taskName.slice(0, 50)}\n\r`;
+        let textToDisplay1 = `${this.props.taskName.slice(0, 50)}\n`;
         let textToDisplay2 = `Status:${this.props.completed == true ? 'Done' : 'In progress'}`;
         return (
             <View style={{

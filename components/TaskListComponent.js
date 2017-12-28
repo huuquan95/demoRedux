@@ -9,6 +9,11 @@ import TaskItemContainer from '../containers/TaskItemContainer'
 
 
 export default class TaskListComponent extends Component {
+
+    componentWillMount() {
+        this.props.onFetchDataFistTime();
+    }
+
     render() {
         return (
             <FlatList

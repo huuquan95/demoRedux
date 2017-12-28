@@ -40,23 +40,14 @@ export default class AddComponent extends Component {
                     </Image>
                 </TouchableOpacity>
 
-                {/* <TextInput
+                <Text
                     style={{
                         fontSize: 20,
                         color: 'white',
-                        width: 270,
-                        textAlign: 'center',
-                        borderColor: '#3496F0'
                     }}
-                    underlineColorAndroid='transparent'
-                    keyboardType='default'
-                    placeholderTextColor='white'
-                    placeholder='Enter task name'
-                    placeholderTextColor='#eeeeee'
-                    autoCapitalize='none'
-                    onChangeText={this._onChangeText}
                 >
-                </TextInput> */}
+                    Quinto App
+                </Text>
 
                 <TouchableOpacity
                     onPress={this.props.onToggleAddTaskModal}
