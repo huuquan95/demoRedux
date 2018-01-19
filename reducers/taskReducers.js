@@ -35,31 +35,16 @@ const defaultState = {
     ],
     isShowAddTaskModal: false,
 }
-async function getMoviesFromApi() {
-    try {
-        let response = await fetch(
-            'https://facebook.github.io/react-native/movies.json'
-        );
-        let responseJson = await response.json();
-        return responseJson.movies;
-    } catch (error) {
-        console.error(error);
-    }
-}
+
 const taskReducers = (state = defaultState, action) => {
 
     switch (action.type) {
 
         case FETCH_DATA_FIRST_TIME:
-            fetch('http://192.168.64.2/index.php')
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    state.tasks = responseJson;
-                    // return state;
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+            state = {
+                ...state,
+                tasks: action.tasks
+            }
 
             // this state is empty cuz it saparate fetch data in new 
             return state;

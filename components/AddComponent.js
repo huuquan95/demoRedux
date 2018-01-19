@@ -30,9 +30,7 @@ export default class AddComponent extends Component {
             }}>
 
                 <TouchableOpacity
-                    onPress={() => {
-                        alert('You have just hitted a Menu button')
-                    }}
+                    onPress={() => this.props.drawerNavigation.navigate('DrawerOpen')}
                 >
                     <Image
                         style={{ width: 30, height: 30 }}

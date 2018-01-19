@@ -6,12 +6,12 @@ import {
     RefreshControl, TextInput
 } from 'react-native';
 
-export default class TaskListDoneComponent extends Component {
+export default class DrawerSlide extends Component {
 
     render() {
         return (
             <View >
-          
+          <Text>Drawer Navigator</Text>
             </View>
         );
     }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import {
     AppRegistry,
-    Text, TouchableOpacity, Image,
+    Text, TouchableOpacity, Image, View,
     Dimensions,
     Platform,
     Button
 } from 'react-native';
-import { TabNavigator, DrawerNavigator } from 'react-navigation';
+import { TabNavigator, DrawerNavigator, DrawerItems } from 'react-navigation';
 
 //redux
 import { createStore } from 'redux';
@@ -15,29 +15,16 @@ import { Provider } from 'react-redux';
 import allReducers from './reducers';
 import TaskManagerComponent from './components/TaskManagerComponent';
 import TabListDoneContainer from './containers/TabListDoneContainer';
+import AddContainer from './containers/AddContainer';
+import AddModalContainer from './containers/AddModalContainer';
+import DrawerSlide from './components/DrawerSlide';
 
 let store = createStore(allReducers);
-
-class AllTasks extends Component {
-    render() {
-        return (
-            <TaskManagerComponent />
-        )
-    }
-}
-
-class DoneTasks extends Component {
-    render() {
-        return (
-            <TabListDoneContainer />
-        )
-    }
-}
 
 class Setting extends Component {
     render() {
         return (
-            <Text>This is Setting Tab.</Text>
+            <Text style={{ marginTop: 34 }}>Setting Tab.</Text>
         )
     }
 }
@@ -45,7 +32,7 @@ class Setting extends Component {
 class AboutApp extends Component {
     render() {
         return (
-            <Text>This is About Tab.</Text>
+            <Text style={{ marginTop: 34 }}>About Tab.</Text>
         )
     }
 }
@@ -53,13 +40,13 @@ class AboutApp extends Component {
 const Tasks = TabNavigator(
     {
         AllTasks: {
-            screen: AllTasks,
+            screen: TaskManagerComponent,
             navigationOptions: {
                 drawerLabel: 'All tasks'
             }
         },
         DoneTasks: {
-            screen: DoneTasks,
+            screen: TabListDoneContainer,
             navigationOptions: {
                 drawerLabel: 'Done tasks'
             }
@@ -71,13 +58,11 @@ const Tasks = TabNavigator(
         animationEnabled: true,
         tabBarOptions: {
             activeTintColor: 'white',
-            //  inactiveTintColor:'#ECF0F1',
             activeBackgroundColor: '#3496F0',
             inactiveBackgroundColor: '#00e640',
             style: {
                 borderTopColor: '#3496F0',
                 borderColor: '#3496f0',
-                //  height: Platform.OS === 'ios' ? 35 : 50
             },
             tabStyle: {
                 height: 45
@@ -88,17 +73,32 @@ const Tasks = TabNavigator(
     },
 );
 
+class TasksComponent extends Component {
+    render() {
+        return (
+            <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0 }} >
+                <AddContainer drawerNavigation={this.props.navigation} />
+                <AddModalContainer></AddModalContainer>
+                <Tasks />
+            </View>
+        )
+    }
+}
+
 const DrawerApp = DrawerNavigator(
     {
         Tasks: {
-            screen: Tasks,
+            screen: TasksComponent,
             navigationOptions: {
                 drawerLabel: 'Tasks'
             }
-        }, Setting: {
+        },
+        Setting: {
             screen: Setting,
-        }, AboutApp: {
-            screen: AboutApp, navigationOptions: {
+        },
+        AboutApp: {
+            screen: AboutApp,
+            navigationOptions: {
                 drawerLabel: 'About App'
             }
         },

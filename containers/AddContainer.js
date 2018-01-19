@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import { toggleAddTaskModal } from '../actions';
 import AddComponent from '../components/AddComponent';
+import React from 'react';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
     return {
+        drawerNavigation: props.drawerNavigation
     }
 }
 

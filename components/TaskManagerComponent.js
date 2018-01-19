@@ -6,19 +6,17 @@ import {
     RefreshControl, TextInput
 } from 'react-native';
 import AddContainer from '../containers/AddContainer';
-import TaskListContainer from '../containers/TaskListContainer';
 import AddModalContainer from '../containers/AddModalContainer';
+import TaskListContainer from '../containers/TaskListContainer';
 import { Button } from 'react-native';
 
 export default class TaskManagerComponent extends Component {
 
     render() {
+        console.log('TaskManagerComponent', this.props.navigation);
         return (
-            <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0 }}
-            >
-                <AddContainer _onPressAdd={this._onPressAdd} />
+            <View >
                 <TaskListContainer />
-                <AddModalContainer></AddModalContainer>
             </View>
         )
     }

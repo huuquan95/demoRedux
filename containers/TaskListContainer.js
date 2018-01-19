@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TaskListComponent from '../components/TaskListComponent';
 import { fetchDataFistTime, refreshState } from '../actions';
-
+import Api from '../api/Api';
 
 const mapStateToProps = (state) => {
     //alert(`state send to task list = ${JSON.stringify(state)}`);
@@ -13,7 +13,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onFetchDataFistTime: () => {
-            dispatch(fetchDataFistTime());
+            Api.getTasks()
+                .then((res) => res.json())
+                .then((tasks) =>
+                    dispatch(fetchDataFistTime(tasks))
+                )
+                .catch((err) => {
+                    console.error(err);
+                    return dispatch(fetchDataFistTime([]))
+                });
         },
         onRefreshState: () => {
             dispatch(refreshState());

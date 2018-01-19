@@ -5,12 +5,17 @@ import {
     TouchableHighlight,
     RefreshControl, TextInput
 } from 'react-native';
-import TaskItemContainer from '../containers/TaskItemContainer'
+import TaskItemContainer from '../containers/TaskItemContainer';
+import Api from '../api/Api'
 
 
 export default class TaskListComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { tasks: [] }
+    }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.onFetchDataFistTime();
     }
 

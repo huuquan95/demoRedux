@@ -5,6 +5,7 @@ import {
     FETCH_DATA_FIRST_TIME,
     REFRESH_STATE
 } from './actionTypes';
+import Api from '../api/Api';
 
 // Action: 'add new task, including taskName and taskDescription'
 export const addNewTask = (inputTaskName, inputTaskDescription) => {
@@ -31,8 +32,9 @@ export const toggleAddTaskModal = () => {
 }
 
 // get data (To Do task list) when the application run
-export const fetchDataFistTime = () => {
+export const fetchDataFistTime = (tasks) => {
     return {
+        tasks: tasks,
         type: FETCH_DATA_FIRST_TIME
     }
 }
